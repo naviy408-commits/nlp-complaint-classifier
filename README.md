@@ -44,40 +44,71 @@ state-of-the-art transformer models.
 
 ---
 
+## 📸 Screenshots
+
+### Complaint Category Distribution
+![Category Distribution](reports/category_distribution.png)
+
+### Model Comparison
+![Model Comparison](reports/model_comparison.png)
+
+### Confusion Matrix
+![Confusion Matrix](reports/confusion_matrix.png)
+
+### Sentiment by Category
+![Sentiment](reports/sentiment_by_category.png)
+
+---
+
 ## 🗂️ Project Structure
 ```
 nlp-complaint-classifier/
 │
-├── Data_Exploration.ipynb              # EDA and visualizations
-├── Text_Processing_Pipeline.ipynb      # Text cleaning and preprocessing
-├── Classification_Models.ipynb         # TF-IDF and DistilBERT training
-├── Sentiment_Analysis_Pipeline.ipynb   # Sentiment detection
-├── Streamlit_Dashboard.ipynb           # Dashboard notebook
+├── notebooks/
+│   ├── 01_Data_Exploration.ipynb
+│   ├── 02_Text_Preprocessing.ipynb
+│   ├── 03_Classification_Models.ipynb
+│   ├── 04_Sentiment_Analysis.ipynb
+│   └── 05_Streamlit_Dashboard.ipynb
 │
-├── app.py                              # Streamlit dashboard app
-├── requirements.txt                    # Project dependencies
-└── README.md                           # Project documentation
+├── reports/
+│   ├── category_distribution.png
+│   ├── confusion_matrix.png
+│   ├── model_comparison.png
+│   ├── sentiment_by_category.png
+│   ├── sentiment_overall.png
+│   ├── sentiment_score_distribution.png
+│   ├── text_length_distribution.png
+│   └── top_categories_horizontal.png
+│
+├── src/
+│   └── app.py
+│
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── setup.py
 ```
 ---
 
 ## 🏗️ Project Architecture
 ```
 Raw Complaint Text
-       ↓
+↓
 Text Cleaning and Preprocessing (NLTK)
-       ↓
+↓
 Exploratory Data Analysis
-       ↓
+↓
 TF-IDF + Logistic Regression (Baseline)
-       ↓
+↓
 DistilBERT Fine-tuning (Advanced)
-       ↓
+↓
 Model Comparison and Evaluation
-       ↓
+↓
 Sentiment Analysis (DistilBERT SST-2)
-       ↓
+↓
 Streamlit Dashboard
-       ↓
+↓
 Deployed on Hugging Face Spaces
 ```
 ---
@@ -136,33 +167,33 @@ Deployed on Hugging Face Spaces
 
 ## 📓 Notebook Details
 
-### 📊 Data_Exploration
+### 📊 01_Data_Exploration
 - Loaded and explored 160K+ complaints
 - Visualized complaint distribution by category
-- Analyzed complaint text length
-- Identified top complaint types
+- Analyzed complaint text length distribution
+- Identified top complaint categories
 
-### 🧹 Text_Processing_Pipeline
+### 🧹 02_Text_Preprocessing
 - Removed special characters and stopwords
 - Applied lemmatization using NLTK
 - Mapped categories to simplified labels
 - Train/test split 80/20
 - Saved processed data as pickle
 
-### 🤖 Classification_Models
+### 🤖 03_Classification_Models
 - Built TF-IDF vectorizer with 10K features
 - Trained Logistic Regression baseline
 - Fine-tuned DistilBERT on T4 GPU
 - Generated confusion matrix
 - Compared both models
 
-### 💬 Sentiment_Analysis_Pipeline
+### 💬 04_Sentiment_Analysis
 - Loaded DistilBERT SST-2 model
 - Analyzed 1000 complaint samples
 - Visualized sentiment by category
 - Identified most negative categories
 
-### 🖥️ Streamlit_Dashboard
+### 🖥️ 05_Streamlit_Dashboard
 - Built real-time complaint classifier
 - Confidence score visualization
 - Analytics page with charts
@@ -204,7 +235,7 @@ Place in project folder.
 
 ### 4 — Run dashboard
 ```bash
-streamlit run app.py
+streamlit run src/app.py
 ```
 
 Open: `http://localhost:8501`
@@ -213,10 +244,10 @@ Open: `http://localhost:8501`
 
 ## 📈 Key Findings
 
-- Credit Card complaints are most common category
+- Credit Reporting is most common category (70%)
 - Debt Collection complaints have highest negative sentiment
 - DistilBERT outperforms TF-IDF by 6% accuracy
-- Average complaint length is around 500 characters
+- Average complaint length is 546 characters
 
 ---
 
